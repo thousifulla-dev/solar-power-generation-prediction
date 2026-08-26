@@ -4,7 +4,7 @@ import pandas as pd
 import pickle  # ← Using pickle instead of joblib
 
 # Load model with pickle
-with open("solar_power_model.pkl", "rb") as f:
+with open("solar_power_model_pickle.pkl", "rb") as f:
     model = pickle.load(f)
 
 st.title("☀️ Solar Power Generation Prediction")
