@@ -1,10 +1,10 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import pickle  # ← Using pickle instead of joblib
+import pickle
 
-# Load model with pickle
-with open("solar_power_model_pickle.pkl", "rb") as f:
+# Load model
+with open("solar_power_model.pkl", "rb") as f:
     model = pickle.load(f)
 
 st.title("☀️ Solar Power Generation Prediction")
@@ -22,6 +22,7 @@ avg_wind_speed = st.number_input("Average Wind Speed (m/s)", value=5.0)
 avg_pressure = st.number_input("Average Pressure (hPa)", value=29.9)
 
 if st.button("Predict"):
+    # Match exact column names from training
     input_data = pd.DataFrame([[
         distance, temperature, wind_direction,
         wind_speed, sky_cover, visibility,
@@ -33,4 +34,4 @@ if st.button("Predict"):
     ])
 
     prediction = model.predict(input_data)
-    st.success(f"Predicted Power: {prediction[0]:.2f} kW")
+    st.success(f"✅ Predicted Power: {prediction[0]:.2f} kW")
