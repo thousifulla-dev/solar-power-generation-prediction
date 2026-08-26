@@ -1,0 +1,11 @@
+[server]
+maxUploadSize = 10
+
+[browser]
+serverAddress = ""
+
+[runner]
+fixMatplotlib = false
+
+[theme]
+base = "light"
